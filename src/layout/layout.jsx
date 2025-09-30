@@ -1,16 +1,25 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Navbar from "../components/Navbar.jsx";
-import Footer from "../components/Footer.jsx";
 
 const Layout = () => {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow">
+    <div
+      className="min-h-screen w-full text-white relative"
+      style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1503264116251-35a269479413?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed", // parallax effect
+      }}
+    >
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-black/70"></div>
+
+      {/* Page Content */}
+      <div className="relative z-10">
         <Outlet />
-      </main>
-      <Footer />
+      </div>
     </div>
   );
 };
