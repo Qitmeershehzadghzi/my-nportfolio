@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
 import "./Navbar.css";
+import cv from '../../assets/my new cv.pdf';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -86,20 +87,35 @@ const Navbar = () => {
 
             {/* Buttons */}
             <div className="nav-buttons">
-              <motion.button 
+         
+                <motion.a
+                              href={cv}
+                              download="Qetmeer-CV.pdf"
+                              className="btn-primary"
+                              whileHover={{ 
+                                scale: 1.05,
+                                y: -2
+                              }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                                  <motion.button 
                 className="btn-primary"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Hire Me!
               </motion.button>
-              <motion.button 
+                            </motion.a>
+              
+               <Link to="/contact" className="btn-secondary">
+                             <motion.button 
                 className="btn-secondary"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Contact
               </motion.button>
+                              </Link>
             </div>
 
             {/* Mobile Menu Toggle */}

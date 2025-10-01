@@ -1,10 +1,12 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
-import { 
-  FaLaptopCode, 
-  FaProjectDiagram, 
-  FaUsers, 
+import cv from '../../assets/my new cv.pdf';
+
+import {
+  FaLaptopCode,
+  FaProjectDiagram,
+  FaUsers,
   FaGraduationCap,
   FaRocket,
   FaAward,
@@ -129,7 +131,7 @@ const About = () => {
 
       <div className="about-container">
         {/* Header Section */}
-        <motion.div 
+        <motion.div
           className="about-header"
           variants={itemVariants}
           initial="hidden"
@@ -143,14 +145,14 @@ const About = () => {
         </motion.div>
 
         {/* Main Content */}
-        <motion.div 
+        <motion.div
           className="about-content-grid"
           variants={containerVariants}
           initial="hidden"
           animate={hasAnimated ? "visible" : "hidden"}
         >
           {/* Left Column - Image & Stats */}
-          <motion.div 
+          <motion.div
             className="about-left"
             variants={leftVariants}
           >
@@ -164,11 +166,11 @@ const About = () => {
                   <span>Available for work</span>
                 </div>
               </div>
-              
+
               {/* Stats Grid */}
               <div className="stats-grid">
                 {stats.map((stat, index) => (
-                  <motion.div 
+                  <motion.div
                     key={index}
                     className="stat-item"
                     variants={itemVariants}
@@ -187,7 +189,7 @@ const About = () => {
           </motion.div>
 
           {/* Right Column - Content */}
-          <motion.div 
+          <motion.div
             className="about-right"
             variants={rightVariants}
           >
@@ -195,25 +197,21 @@ const About = () => {
             <div className="story-section">
               <h3>My Journey</h3>
               <div className="story-content">
-                <motion.p 
+                <motion.p
                   className="story-paragraph"
                   variants={itemVariants}
                 >
-                  <span className="highlight">Education / Background:</span> I completed my studies in 
-                  <em> Computer Science</em> and have been learning web development intensively 
-                  for the past 5 months, building real-world projects and expanding my skill set.
+                  <span className="highlight">Education / Background:</span>I completed my matriculation in Commerce and I am currently in 2nd year (Intermediate in Commerce). Alongside my studies, I have completed a Web Development course from Saylani, where I learned and practiced modern technologies.
                 </motion.p>
-                
-                <motion.p 
+
+                <motion.p
                   className="story-paragraph"
                   variants={itemVariants}
                 >
-                  <span className="highlight">Skills / Expertise:</span> I specialize in MERN Stack
-                  development (MongoDB, Express.js, React, Node.js) and have hands-on
-                  experience building full-stack applications with modern technologies.
+                  <span className="highlight">Skills / Expertise:</span> I specialize in MERN Stack development (MongoDB, Express.js, React, Node.js) and have hands-on experience building full-stack applications through real-world projects.
                 </motion.p>
-                
-                <motion.p 
+
+                <motion.p
                   className="story-paragraph"
                   variants={itemVariants}
                 >
@@ -227,14 +225,14 @@ const About = () => {
             {/* Experience Section */}
             <div className="experience-section">
               <h3>Experience & Achievements</h3>
-              <motion.div 
+              <motion.div
                 className="experience-list"
                 variants={staggerVariants}
                 initial="hidden"
                 animate={hasAnimated ? "visible" : "hidden"}
               >
                 {experiences.map((exp, index) => (
-                  <motion.div 
+                  <motion.div
                     key={index}
                     className="experience-item"
                     variants={childVariants}
@@ -248,7 +246,7 @@ const About = () => {
             </div>
 
             {/* Call to Action */}
-            <motion.div 
+            <motion.div
               className="about-cta"
               variants={itemVariants}
             >
@@ -257,10 +255,22 @@ const About = () => {
                 <Link to="/contact" className="cta-button primary">
                   Hire Me
                 </Link>
-                <button className="cta-button secondary">
-                  <FaDownload />
-                  Download CV
-                </button>
+
+                <motion.a
+                  href={cv}
+                  download="Qetmeer-CV.pdf"
+                  className="btn-primary"
+                  whileHover={{
+                    scale: 1.05,
+                    y: -2
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <button className="cta-button secondary">
+                    <FaDownload />
+                    Download CV
+                  </button>
+                </motion.a>
               </div>
             </motion.div>
           </motion.div>

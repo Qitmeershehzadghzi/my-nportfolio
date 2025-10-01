@@ -1,11 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { 
-  FaDownload, 
-  FaEye, 
-  FaGithub, 
-  FaLinkedin, 
+import { IoLogoFacebook } from "react-icons/io";
+
+import {
+  FaDownload,
+  FaEye,
+  FaGithub,
+  FaLinkedin,
   FaEnvelope,
   FaRocket,
   FaCode,
@@ -57,7 +59,7 @@ const Home = () => {
     <section className="home-section">
       {/* Animated Background Elements */}
       <div className="home-bg-elements">
-        <motion.div 
+        <motion.div
           className="bg-shape shape-1"
           animate={{
             y: [0, -20, 0],
@@ -69,7 +71,7 @@ const Home = () => {
             ease: "linear"
           }}
         ></motion.div>
-        <motion.div 
+        <motion.div
           className="bg-shape shape-2"
           animate={{
             y: [0, 30, 0],
@@ -81,7 +83,7 @@ const Home = () => {
             ease: "easeInOut"
           }}
         ></motion.div>
-        <motion.div 
+        <motion.div
           className="bg-shape shape-3"
           animate={{
             scale: [1, 1.2, 1],
@@ -98,13 +100,13 @@ const Home = () => {
       <div className="home-container">
         <div className="home-content">
           {/* Left Side - Text Content */}
-          <motion.div 
+          <motion.div
             className="text-section"
             initial="hidden"
             animate="visible"
           >
             {/* Badge */}
-            <motion.span 
+            <motion.span
               className="badge"
               variants={textVariants}
               custom={0}
@@ -114,16 +116,16 @@ const Home = () => {
             </motion.span>
 
             {/* Main Heading */}
-            <motion.h1 
+            <motion.h1
               className="main-heading"
               variants={textVariants}
               custom={1}
             >
-               <span className="name-highlight">Qetmeer</span>
+              <span className="name-highlight">Qetmeer</span>
             </motion.h1>
 
             {/* Subtitle */}
-            <motion.h2 
+            <motion.h2
               className="subtitle"
               variants={textVariants}
               custom={2}
@@ -132,7 +134,7 @@ const Home = () => {
             </motion.h2>
 
             {/* Description */}
-            <motion.p 
+            <motion.p
               className="description"
               variants={textVariants}
               custom={3}
@@ -141,12 +143,12 @@ const Home = () => {
               <span className="tech-highlight">React</span>,{' '}
               <span className="tech-highlight">Node.js</span>,{' '}
               <span className="tech-highlight">Express</span>, and{' '}
-              <span className="tech-highlight">MongoDB</span>. 
+              <span className="tech-highlight">MongoDB</span>.
               Transforming ideas into seamless digital experiences with modern technologies.
             </motion.p>
 
             {/* Stats */}
-            <motion.div 
+            <motion.div
               className="stats-container"
               variants={textVariants}
               custom={4}
@@ -166,7 +168,7 @@ const Home = () => {
             </motion.div>
 
             {/* Buttons */}
-            <motion.div 
+            <motion.div
               className="button-container"
               variants={textVariants}
               custom={5}
@@ -175,7 +177,7 @@ const Home = () => {
                 href={cv}
                 download="Qetmeer-CV.pdf"
                 className="btn-primary"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
                   y: -2
                 }}
@@ -186,7 +188,7 @@ const Home = () => {
               </motion.a>
 
               <motion.div
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
                   y: -2
                 }}
@@ -200,15 +202,15 @@ const Home = () => {
             </motion.div>
 
             {/* Social Links */}
-            <motion.div 
+            <motion.div
               className="social-links"
               variants={textVariants}
               custom={6}
             >
-              <motion.a 
-                href="https://github.com/Qitmeershehzadghzi" 
+              <motion.a
+                href="https://github.com/Qitmeershehzadghzi"
                 className="social-icon"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.2,
                   y: -3
                 }}
@@ -217,10 +219,10 @@ const Home = () => {
               >
                 <FaGithub />
               </motion.a>
-              <motion.a 
-                href="https://www.linkedin.com/in/qetmeer-shehzad-0b441b2ba/" 
+              <motion.a
+                href="https://www.linkedin.com/in/qetmeer-shehzad-0b441b2ba/"
                 className="social-icon"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.2,
                   y: -3
                 }}
@@ -229,29 +231,27 @@ const Home = () => {
               >
                 <FaLinkedin />
               </motion.a>
-              <motion.a 
-                href="mailto:qetmeer@example.com" 
-                className="social-icon"
-                whileHover={{ 
-                  scale: 1.2,
-                  y: -3
-                }}
-                whileTap={{ scale: 0.9 }}
-                aria-label="Email"
-              >
-                <FaEnvelope />
-              </motion.a>
+     <motion.a
+  href="https://www.facebook.com/share/17Kjmcm91v/"
+  className="social-icon"
+  whileHover={{
+    scale: 1.2,
+    y: -3
+  }}
+>
+  <IoLogoFacebook size={28} />   {/* yahan Facebook ka logo aa jayega */}
+</motion.a>
             </motion.div>
           </motion.div>
 
           {/* Right Side - Profile Image */}
-          <motion.div 
+          <motion.div
             className="image-section"
             initial="hidden"
             animate="visible"
             variants={imageVariants}
           >
-            <motion.div 
+            <motion.div
               className="image-container"
               variants={floatingVariants}
               animate="floating"
@@ -271,7 +271,7 @@ const Home = () => {
               </div>
 
               {/* Floating Tech Badges */}
-              <motion.div 
+              <motion.div
                 className="floating-tech react-badge"
                 animate={{
                   y: [-20, 20, -20],
@@ -287,7 +287,7 @@ const Home = () => {
                 React
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 className="floating-tech node-badge"
                 animate={{
                   y: [20, -20, 20],
@@ -305,7 +305,7 @@ const Home = () => {
               </motion.div>
 
               {/* Status Badge */}
-              <motion.div 
+              <motion.div
                 className="status-badge"
                 whileHover={{ scale: 1.1 }}
               >
@@ -317,20 +317,20 @@ const Home = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div 
+        <motion.div
           className="scroll-indicator"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2, duration: 0.8 }}
         >
-          <motion.span 
+          <motion.span
             className="scroll-text"
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
             SCROLL DOWN
           </motion.span>
-          <motion.div 
+          <motion.div
             className="scroll-mouse"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
