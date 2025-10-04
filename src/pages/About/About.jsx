@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
-import cv from '../../assets/my new cv.pdf';
+import cv from '../../assets/Qetmeer cv.pdf';
 
 import {
   FaLaptopCode,
@@ -26,7 +26,7 @@ const About = () => {
   }, [isInView, hasAnimated]);
 
   const stats = [
-    { number: "3+", label: "Projects Completed", icon: <FaProjectDiagram /> },
+    { number: "10+", label: "Projects Completed", icon: <FaProjectDiagram /> },
     { number: "5+", label: "Months Experience", icon: <FaLaptopCode /> },
     { number: "10+", label: "Technologies", icon: <FaRocket /> },
     { number: "100%", label: "Client Satisfaction", icon: <FaAward /> }

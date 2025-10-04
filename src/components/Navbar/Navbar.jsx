@@ -3,13 +3,29 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
 import "./Navbar.css";
-import cv from '../../assets/my new cv.pdf';
+import cv from '../../assets/Qetmeer cv.pdf';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-  const location = useLocation(); // Uncommented this line
+  const [colorIndex, setColorIndex] = useState(0);
+  const location = useLocation();
+
+  // Color schemes array
+  const colorSchemes = [
+    "default", 
+    "ocean-blue", 
+    "sunset-orange", 
+    "forest-green", 
+    "royal-purple", 
+    "candy-pink", 
+    "gold-luxury", 
+    "cyber-neon", 
+    "gradient-rainbow"
+  ];
+
+  const currentColorScheme = colorSchemes[colorIndex];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,19 +38,23 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleTheme = () => setDarkMode(!darkMode);
 
+  // Simple function to cycle through colors
+  const toggleColor = () => {
+    setColorIndex((prevIndex) => (prevIndex + 1) % colorSchemes.length);
+  };
+
   const navItems = [
     { path: "/", label: "Home" },
     { path: "/about", label: "About" },
     { path: "/projects", label: "Projects" },
     { path: "/skills", label: "Skills" },
-    { path: "/services", label: "Services" },
     { path: "/contact", label: "Contact" },
   ];
 
   return (
     <>
       <motion.nav 
-        className={`navbar ${scrolled ? "scrolled" : ""} ${darkMode ? "dark" : ""}`}
+        className={`navbar ${scrolled ? "scrolled" : ""} ${darkMode ? "dark" : ""} ${currentColorScheme}`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, type: "spring" }}
@@ -75,47 +95,46 @@ const Navbar = () => {
 
           {/* Right Section */}
           <div className="nav-right">
-            {/* Theme Toggle */}
+            {/* Color Toggle Button */}
             <motion.button 
+              className="color-toggle"
+              onClick={toggleColor}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              title="Change color theme"
+            >
+              <span className="color-indicator"></span>
+            </motion.button>
+
+            {/* Theme Toggle */}
+            {/* <motion.button 
               className="theme-toggle"
               onClick={toggleTheme}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
               {darkMode ? <FaSun /> : <FaMoon />}
-            </motion.button>
+            </motion.button> */}
 
             {/* Buttons */}
             <div className="nav-buttons">
-         
-                <motion.a
-                              href={cv}
-                              download="Qetmeer-CV.pdf"
-                              className="btn-primary"
-                              whileHover={{ 
-                                scale: 1.05,
-                                y: -2
-                              }}
-                              whileTap={{ scale: 0.95 }}
-                            >
-                                  <motion.button 
+              <motion.a
+                href={cv}
+                download="Qetmeer-CV.pdf"
                 className="btn-primary"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Hire Me!
-              </motion.button>
-                            </motion.a>
-              
-               <Link to="/contact" className="btn-secondary">
-                             <motion.button 
-                className="btn-secondary"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Contact
-              </motion.button>
-                              </Link>
+                Hie me!
+              </motion.a>
+              <Link to="/contact" className="btn-secondary">
+                <motion.button 
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Contact
+                </motion.button>
+              </Link>
             </div>
 
             {/* Mobile Menu Toggle */}
@@ -140,6 +159,17 @@ const Navbar = () => {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
+              {/* Color Toggle for Mobile */}
+              <motion.button 
+                className="color-toggle mobile-color-toggle"
+                onClick={toggleColor}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                style={{ margin: '0 auto 20px', display: 'block' }}
+              >
+                <span className="color-indicator"></span>
+              </motion.button>
+
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.path}
@@ -157,8 +187,12 @@ const Navbar = () => {
                 </motion.div>
               ))}
               <div className="mobile-buttons">
-                <button className="btn-primary">Hire Me!</button>
-                <button className="btn-secondary">Contact</button>
+                <a href={cv} download="Qetmeer-CV.pdf" className="btn-primary">
+                  Download CV
+                </a>
+                <Link to="/contact" className="btn-secondary">
+                  Contact
+                </Link>
               </div>
             </motion.div>
           )}

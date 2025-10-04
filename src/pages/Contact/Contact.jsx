@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { 
   FaPaperPlane, 
   FaMapMarkerAlt, 
@@ -7,40 +9,10 @@ import {
   FaEnvelope,
   FaLinkedin,
   FaGithub,
-  FaCheckCircle
 } from "react-icons/fa";
 import "./Contact.css";
 
 const Contact = () => {
-  const [form, setForm] = useState({ 
-    name: "", 
-    email: "", 
-    subject: "", 
-    message: "" 
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setForm({ name: "", email: "", subject: "", message: "" });
-    }, 3000);
-  };
 
   const contactInfo = [
     {
@@ -52,14 +24,14 @@ const Contact = () => {
     {
       icon: <FaPhone />,
       title: "Phone",
-      value: "+92 XXX XXXXXX",
-      link: "tel:+92XXXXXXXXXX"
+      value: "+92 305 3158512",
+      link: "tel:+923053158512"
     },
     {
       icon: <FaEnvelope />,
       title: "Email",
-      value: "qetmeer@example.com",
-      link: "mailto:qetmeer@example.com"
+      value: "qitmeershehzad@gmail.com",
+      link: "mailto:qitmeershehzad@gmail.com"
     }
   ];
 
@@ -78,8 +50,18 @@ const Contact = () => {
     }
   ];
 
+  // ✅ This function is triggered after form submit
+  const handleFormSubmit = () => {
+    toast.success("✅ Your message has been sent successfully!", {
+      position: "top-right",
+      autoClose: 4000,
+    });
+  };
+
   return (
     <section className="contact-section">
+      <ToastContainer />
+      
       {/* Background Elements */}
       <div className="contact-bg-elements">
         <div className="contact-shape shape-1"></div>
@@ -161,106 +143,68 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {isSubmitted ? (
-              <motion.div 
-                className="success-message"
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ type: "spring" }}
-              >
-                <FaCheckCircle className="success-icon" />
-                <h3>Message Sent!</h3>
-                <p>Thank you for your message. I'll get back to you soon.</p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="contact-form">
-                <div className="form-row">
-                  <motion.div 
-                    className="form-group"
-                    whileFocus={{ scale: 1.02 }}
-                  >
-                    <label htmlFor="name">Full Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={form.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="Enter your full name"
-                    />
-                  </motion.div>
+            <form 
+              action="https://formsubmit.co/qitmeershehzad@gmail.com" 
+              method="POST"
+              className="contact-form"
+              onSubmit={handleFormSubmit}
+            >
+              {/* FormSubmit hidden inputs */}
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_next" value={window.location.href} />
 
-                  <motion.div 
-                    className="form-group"
-                    whileFocus={{ scale: 1.02 }}
-                  >
-                    <label htmlFor="email">Email Address</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="Enter your email address"
-                    />
-                  </motion.div>
-                </div>
-
-                <motion.div 
-                  className="form-group"
-                  whileFocus={{ scale: 1.02 }}
-                >
-                  <label htmlFor="subject">Subject</label>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="name">Full Name</label>
                   <input
                     type="text"
-                    id="subject"
-                    name="subject"
-                    value={form.subject}
-                    onChange={handleChange}
+                    id="name"
+                    name="name"
                     required
-                    placeholder="What's this about?"
+                    placeholder="Enter your full name"
                   />
-                </motion.div>
+                </div>
 
-                <motion.div 
-                  className="form-group"
-                  whileFocus={{ scale: 1.02 }}
-                >
-                  <label htmlFor="message">Your Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
+                <div className="form-group">
+                  <label htmlFor="email">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
                     required
-                    rows="6"
-                    placeholder="Tell me about your project..."
+                    placeholder="Enter your email address"
                   />
-                </motion.div>
+                </div>
+              </div>
 
-                <motion.button
-                  type="submit"
-                  className={`submit-btn ${isSubmitting ? 'submitting' : ''}`}
-                  disabled={isSubmitting}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="spinner"></div>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <FaPaperPlane />
-                      Send Message
-                    </>
-                  )}
-                </motion.button>
-              </form>
-            )}
+              <div className="form-group">
+                <label htmlFor="subject">Subject</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  required
+                  placeholder="What's this about?"
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="message">Your Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows="6"
+                  placeholder="Tell me about your project..."
+                />
+              </div>
+
+              <button type="submit" className="submit-btn">
+                <FaPaperPlane />
+                Send Message
+              </button>
+            </form>
           </motion.div>
         </div>
       </div>

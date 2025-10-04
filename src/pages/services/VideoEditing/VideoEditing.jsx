@@ -13,16 +13,18 @@ import {
   FaRupeeSign,
   FaCheck,
   FaClock,
-  FaEdit
+  FaEdit,
+  FaWhatsapp
 } from "react-icons/fa";
-import "./VideoEditing.css";
+// import "./VideoEditing.css";
 
 const VideoEditing = () => {
   const [currency, setCurrency] = useState("USD");
+  const phoneNumber = "03053158512";
 
   const editingPackages = [
     {
-      name: "Basic Editing",
+      name: "Basic Social Media Edit",
       price: { USD: 49, PKR: 14000 },
       description: "Perfect for simple social media videos",
       delivery: "2-3 days",
@@ -33,14 +35,13 @@ const VideoEditing = () => {
         "Simple Transitions",
         "Text Overlays",
         "Background Music",
-        "1080p Resolution",
-        "1 Platform Optimization"
+        "1080p Resolution"
       ],
       bestFor: ["YouTube Shorts", "Instagram Reels", "Facebook Videos"],
       popular: false
     },
     {
-      name: "Standard Package",
+      name: "Content Creator Package",
       price: { USD: 149, PKR: 42000 },
       description: "Professional editing for content creators",
       delivery: "5-7 days",
@@ -51,16 +52,13 @@ const VideoEditing = () => {
         "Motion Graphics",
         "Sound Effects",
         "Voice Over Sync",
-        "4K Resolution",
-        "Multi-platform Optimization",
-        "Custom Thumbnail",
-        "Brand Integration"
+        "4K Resolution"
       ],
       bestFor: ["YouTube Videos", "Product Demos", "Tutorials"],
       popular: true
     },
     {
-      name: "Premium Package",
+      name: "Premium Corporate Edit",
       price: { USD: 299, PKR: 84000 },
       description: "Advanced editing for professional needs",
       delivery: "7-10 days",
@@ -71,17 +69,13 @@ const VideoEditing = () => {
         "Advanced Motion Graphics",
         "Visual Effects",
         "Sound Design",
-        "4K/6K Resolution",
-        "All Platform Optimization",
-        "Custom Animations",
-        "Multiple Thumbnails",
-        "Priority Support"
+        "4K/6K Resolution"
       ],
       bestFor: ["Corporate Videos", "Commercials", "Music Videos"],
       popular: false
     },
     {
-      name: "Enterprise Package",
+      name: "Enterprise Video Production",
       price: { USD: 599, PKR: 168000 },
       description: "Complete video production solution",
       delivery: "2-3 weeks",
@@ -92,20 +86,22 @@ const VideoEditing = () => {
         "Complex Visual Effects",
         "Professional Sound Mixing",
         "8K Resolution Ready",
-        "Multi-camera Editing",
-        "Script Consultation",
-        "Storyboard Creation",
-        "Dedicated Editor",
-        "24/7 Support"
+        "Multi-camera Editing"
       ],
       bestFor: ["Feature Films", "Documentaries", "Large Campaigns"],
       popular: false
     }
   ];
 
+  const handleWhatsAppOrder = (packageName, price) => {
+    const message = `Hello! I want to order the ${packageName} package for ${currency === 'USD' ? '$' : 'Rs '}${price}. Please provide more details.`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <motion.div
-      className="video-editing-service"
+      className="service-packages"
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.6 }}
@@ -200,18 +196,17 @@ const VideoEditing = () => {
                 </div>
               </div>
 
-              <button className="package-cta-btn">
-                Start Project
-                <FaRocket />
+              <button 
+                className="whatsapp-order-btn"
+                onClick={() => handleWhatsAppOrder(pkg.name, pkg.price[currency])}
+              >
+                <FaWhatsapp className="whatsapp-icon" />
+                Order on WhatsApp
               </button>
             </motion.div>
           ))}
         </div>
       </div>
-
-      {/* Existing sections remain same */}
-      {/* ... */}
-
     </motion.div>
   );
 };

@@ -24,11 +24,11 @@ const App = () => {
         <Route path="/skills" element={<Skills />} />
         
         {/* Nested Services Routes */}
-        <Route path="/services" element={<Services />}>
+        {/* <Route path="/services" element={<Services />}>
           <Route path="mern-stack" element={<MernStack />} />
           <Route path="ms-office" element={<MsOffice />} />
           <Route path="video-editing" element={<VideoEditing />} />
-        </Route>
+        </Route> */}
       </Routes>
       <Footer />
     </>

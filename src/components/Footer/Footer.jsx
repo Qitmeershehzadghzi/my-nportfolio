@@ -40,7 +40,7 @@ const Footer = () => {
             <a href="/projects" className="footer-link">Projects</a>
             <a href="/contact" className="footer-link">Contact</a>
             <a href="/skills" className="footer-link">Skills</a>
-            <a href="/services" className="footer-link">Services</a>
+            {/* <a href="/services" className="footer-link">Services</a> */}
           </div>
         </motion.div>
 
@@ -72,7 +72,7 @@ const Footer = () => {
               <span>LinkedIn</span>
             </a>
             <a 
-              href="#" 
+    href="https://www.facebook.com/share/17Kjmcm91v/"
               className="social-icon facebook"
             >
               <FaFacebook />

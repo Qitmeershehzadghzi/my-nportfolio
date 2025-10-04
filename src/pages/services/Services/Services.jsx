@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import {   FaCode,  FaLaptop,  FaVideo,   FaArrowRight,  FaRocket,  FaClock,  FaCheckCircle} from "react-icons/fa";
+import { 
+  FaCode, 
+  FaLaptop, 
+  FaVideo, 
+  FaArrowRight, 
+  FaRocket, 
+  FaClock, 
+  FaCheckCircle,
+  FaServer
+} from "react-icons/fa";
 import "./Services.css";
 
 const Services = () => {
@@ -35,11 +44,10 @@ const Services = () => {
     }
   ];
 
-  // Using only available icons
   const stats = [
     { number: "10+", label: "Projects Completed", icon: <FaRocket /> },
     { number: "100%", label: "Client Satisfaction", icon: <FaCheckCircle /> },
-    { number: "24/7", label: "Support", icon: <FaClock /> } // Using FaClock instead
+    { number: "24/7", label: "Support", icon: <FaClock /> }
   ];
 
   return (

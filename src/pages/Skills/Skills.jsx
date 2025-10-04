@@ -19,12 +19,12 @@ const skillsData = [
     icon: <FaPalette />,
     color: "#3b82f6",
     skills: [
-      { name: "React", level: 85, icon: "⚛️" },
+      { name: "React", level: 75, icon: "⚛️" },
       { name: "JavaScript", level: 90, icon: "🟨" },
       { name: "HTML5", level: 95, icon: "🌐" },
-      { name: "CSS3", level: 88, icon: "🎨" },
-      { name: "Tailwind CSS", level: 80, icon: "💨" },
-      { name: "Bootstrap", level: 75, icon: "🅱️" }
+      { name: "CSS3", level: 78, icon: "🎨" },
+      { name: "Tailwind CSS", level: 70, icon: "💨" },
+      { name: "Bootstrap", level: 70, icon: "🅱️" }
     ]
   },
   {
@@ -34,10 +34,10 @@ const skillsData = [
     skills: [
       { name: "Node.js", level: 80, icon: "🟢" },
       { name: "Express.js", level: 75, icon: "🚂" },
-      { name: "Python", level: 70, icon: "🐍" },
+      { name: "Python", level: 50, icon: "🐍" },
       { name: "REST APIs", level: 85, icon: "🔗" },
       { name: "Authentication", level: 78, icon: "🔐" },
-      { name: "WebSockets", level: 65, icon: "⚡" }
+      // { name: "WebSockets", level: 65, icon: "⚡" }
     ]
   },
   {
@@ -46,7 +46,7 @@ const skillsData = [
     color: "#f59e0b",
     skills: [
       { name: "MongoDB", level: 75, icon: "🍃" },
-      { name: "MySQL", level: 70, icon: "🐬" },
+      // { name: "MySQL", level: 70, icon: "🐬" },
       { name: "Git", level: 85, icon: "📚" },
       { name: "GitHub", level: 80, icon: "🐙" },
       { name: "VS Code", level: 90, icon: "💻" },
@@ -59,11 +59,11 @@ const skillsData = [
     color: "#8b5cf6",
     skills: [
       { name: "MERN Stack", level: 80, icon: "⚡" },
-      { name: "Firebase", level: 70, icon: "🔥" },
+      // { name: "Firebase", level: 70, icon: "🔥" },
       { name: "Netlify", level: 85, icon: "☁️" },
       { name: "Vercel", level: 80, icon: "▲" },
-      { name: "Heroku", level: 65, icon: "🚀" },
-      { name: "Docker", level: 60, icon: "🐳" }
+      { name: "cloudinary", level: 65, icon: "🚀" },
+      // { name: "Docker", level: 60, icon: "🐳" }
     ]
   }
 ];
