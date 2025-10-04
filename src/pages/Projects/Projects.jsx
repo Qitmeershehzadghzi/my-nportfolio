@@ -119,7 +119,7 @@ const Projects = () => {
 
       {/* Project Image */}
       <div className="project-image">
-        <img src={project.image} alt={project.title} />
+        <img src={project.image} alt={project.Title} />
         <div className="project-overlay">
           <div className="overlay-content">
             <motion.button
@@ -135,8 +135,8 @@ const Projects = () => {
 
       {/* Project Content */}
       <div className="project-content">
-        <h3 className="project-title">{project.title}</h3>
-        <p className="project-description">{project.description}</p>
+        <h3 className="project-title">{project.Title}</h3>
+        <p className="project-description">{project.Description}</p>
 
         {/* Tech Stack */}
         <div className="tech-stack">
@@ -304,12 +304,12 @@ const Projects = () => {
               </button>
               
               <div className="modal-image">
-                <img src={selectedProject.image} alt={selectedProject.title} />
+                <img src={selectedProject.image} alt={selectedProject.Title} />
               </div>
               
               <div className="modal-details">
-                <h3>{selectedProject.title}</h3>
-                <p>{selectedProject.description}</p>
+                <h3>{selectedProject.Title}</h3>
+                <p>{selectedProject.Description}</p>
                 
                 <div className="modal-tech">
                   <h4>Technologies Used</h4>
