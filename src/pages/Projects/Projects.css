@@ -1,9 +1,9 @@
 .projects-section {
   min-height: 100vh;
-background: url('https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg') no-repeat center center fixed;
+
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
   position: relative;
   overflow: hidden;
-    background-size: cover;
 
   padding: 100px 0;
 }
