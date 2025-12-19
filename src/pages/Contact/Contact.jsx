@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
+import './contact.css'
+
 // import 'react-toastify/dist/ReactToastify.css';
 import { 
   FaPaperPlane, 
@@ -10,7 +12,6 @@ import {
   FaLinkedin,
   FaGithub,
 } from "react-icons/fa";
-import './contact.css'
 const Contact = () => {
 
   const contactInfo = [
