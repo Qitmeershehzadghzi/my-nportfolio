@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-
+import CV_DOWNLOAD_URL from '../../../public/Qetmeer_CV.pdf'
 // Icons (Using Lucide React)
 import {
   Home,
@@ -26,7 +26,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const CV_DOWNLOAD_URL = "https://placehold.co/200x100/3b82f6/ffffff?text=CV+Placeholder";
+  // const ";
 
   // Scroll Effect
   useEffect(() => {

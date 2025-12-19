@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import cv from "../../../public/Qetmeer_CV.pdf";
+
 import { 
   Code,          
   Package,       
@@ -264,7 +266,7 @@ const App = () => {
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <motion.a
-                    href="#contact"
+                    href="/contact"
                     className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300 flex items-center justify-center gap-2 group"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -274,7 +276,7 @@ const App = () => {
                   </motion.a>
                   
                   <motion.a
-                    href="#"
+                    href={cv}
                     className="px-8 py-3 bg-gray-800/50 backdrop-blur-sm border border-gray-700 text-white font-semibold rounded-xl hover:bg-gray-700/50 transition-all duration-300 flex items-center justify-center gap-2 group"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
