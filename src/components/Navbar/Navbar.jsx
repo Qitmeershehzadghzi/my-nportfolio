@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import CV_DOWNLOAD_URL from '../../../public/Qetmeer_CV.pdf'
+
 // Icons (Using Lucide React)
 import {
   Home,
@@ -15,18 +16,33 @@ import {
   Download,
   Menu,
   X,
-  Sparkles,
   Zap,
   ArrowRight
 } from "lucide-react";
 
-const Navbar = ({ darkMode, setDarkMode }) => {
+const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    // Check localStorage for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme === 'dark' || 
+           (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  });
+  
   const location = useLocation();
   const navigate = useNavigate();
 
-  // const ";
+  // Apply dark mode class to document root
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
 
   // Scroll Effect
   useEffect(() => {
@@ -45,6 +61,11 @@ const Navbar = ({ darkMode, setDarkMode }) => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  // Handle dark mode toggle
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
   };
 
   const navItems = [
@@ -120,7 +141,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
             {/* Action Buttons */}
             <div className="flex items-center space-x-4">
               <motion.button
-                onClick={() => setDarkMode(!darkMode)}
+                onClick={toggleDarkMode}
                 className="p-3 bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm rounded-xl text-gray-300 hover:text-yellow-300 hover:bg-gradient-to-br hover:from-gray-700/30 hover:to-gray-800/30 transition-all duration-300 border border-gray-700/50"
                 aria-label="Toggle theme"
                 whileHover={{ scale: 1.05 }}
@@ -143,7 +164,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center space-x-4">
             <motion.button
-              onClick={() => setDarkMode(!darkMode)}
+              onClick={toggleDarkMode}
               className="p-3 bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm rounded-xl text-gray-300 hover:text-yellow-300 transition-all duration-300 border border-gray-700/50"
               aria-label="Toggle theme"
               whileTap={{ scale: 0.95 }}
@@ -195,7 +216,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
               ))}
               <div className="pt-6 mt-4 border-t border-gray-800/50 space-y-4">
                 <motion.button
-                  onClick={() => setDarkMode(!darkMode)}
+                  onClick={toggleDarkMode}
                   className="w-full flex items-center justify-center gap-2 p-3 bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm rounded-xl text-gray-300 hover:text-yellow-300 border border-gray-700/50 transition-colors"
                   whileTap={{ scale: 0.98 }}
                 >
