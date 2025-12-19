@@ -282,7 +282,7 @@ const App = () => {
                     whileTap={{ scale: 0.95 }}
                   >
                     <Download className="w-4 h-4 group-hover:animate-bounce" />
-                    Download CV
+                    Download Cv
                   </motion.a>
                 </div>
               </div>
